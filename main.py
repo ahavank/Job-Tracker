@@ -1,41 +1,59 @@
-jobs = []
-# I used this While statement in the very beginning of the code to insure the full code runs in a loop until the user selects exit themselves. 
-# This is so the user can select multiple options from the menu without having to restart the program each time they want to select a new option.
-while True:
-    #This is the menu texts that show the user all the possible options they can select from.
-    print("Welcome to JobTracker!")
-    print("1. Add a Job")
-    print("2. View Jobs")
-    print("3. Exit")
-    option=input("Please select an option: ")
+import add_job
+import open_file
+'''
+This is the main.py file for the Job Tracker application. It provides a command-line interface for users to add and view job entries.
+The application allows users to input the company name, job title, and job status for each job entry. 
+The job entries are stored in a list and can be viewed by the user.
+The application runs in a loop until the user selects the exit option from the menu.
+'''
+
+def main():
+    jobs = []
+
+    # This while statement keeps the program running until the user selects exit.
+    while True:
+        # This menu shows the user all the possible options.
+        print("Welcome to JobTracker!")
+        print("1. Add a Job")
+        print("2. View Jobs")
+        print("3. Exit")
+
+        option = input("Please select an option: ")
+
+        # If the user selects one of the menu options, the corresponding code runs.
+        if option == "1":
+
+            # Add the company name and job title to the jobs list.
+            jobs.append(add_job.add_job())
+
+            open_file.open_file(jobs)
+
+            print("Job added successfully!")
 
 
-    # If the user selects one of the 3 numbers from the menu these if statements will run the code that corresponds to the option selected.
-    if option == "1":
-        print ("You have selected Add a Job")
-        company_name = input("Enter the company name: ")
-        job_title = input("Enter the job title: ")
-        # I used the append method to add the company name to the end of the list in job
-        jobs.append
-        ({
-            "company_name": company_name, 
-            "job_title": job_title
-        })
-        print("Job added successfully!")
+        elif option == "2":
+        
+            print("You have selected View Jobs")
+            try:
+                with open("jobs.txt", "r") as file:
+                    contents = file.read()
+                    print(contents)
+            except FileNotFoundError:
+                print("No jobs found. Please add a job first.")
+        
 
-    elif option == "2":
-        print ("You have selected View Jobs")
-        for job in jobs:
-            print("Company Name: ", job["company_name"]) 
-            print("Job Title: ", job["job_title"])
-            print()   
+            for job in contents:
+                print("Company:", job["company_name"])
+                print("Job Title:", job["job_title"])
+                print("Job Status:", job["job_status"])
+                print()
 
-    elif option == "3":
-        print ("You have selected Exit")
-        exit()
+        elif option == "3":
+            print("You have selected Exit")
+            exit()
+    # The else statement is to insure that is the user selects a valid option from the menu. 
+    # If they do not select a valid option they will be prompted to try again.
+        else:
+            print("Invalid option selected. Please try again.")
 
-# The else statement is to insure that is the user selects a valid option from the menu. 
-# If they do not select a valid option they will be prompted to try again.
-    else:
-        print ("Invalid option selected. Please try again.")
-    
+main()
