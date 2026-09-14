@@ -27,13 +27,13 @@ def main():
             jobs.append(add_job.add_job())
 
             open_file.open_file(jobs)
-
+            jobs.clear() # Clears the list so that the list isn't duplicated everytime it prints to jobs.txt
             print("Job added successfully!")
 
 
         elif option == "2":
         
-            print("\nYou have selected View Jobs")
+            print("\n\nYou have selected View Jobs\n")
             try:
                 with open("jobs.txt", "r") as file:
                     contents = file.read()
