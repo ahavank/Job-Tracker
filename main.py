@@ -8,7 +8,6 @@ The application runs in a loop until the user selects the exit option from the m
 '''
 
 def main():
-    jobs = []
 
     # This while statement keeps the program running until the user selects exit.
     while True:
@@ -22,12 +21,11 @@ def main():
 
         # If the user selects one of the menu options, the corresponding code runs.
         if option == "1":
-
+            jobs = [] # Used only as a temporary variable to save it to the file
             # Add the company name and job title to the jobs list.
             jobs.append(add_job.add_job())
 
             open_file.open_file(jobs)
-            jobs.clear() # Clears the list so that the list isn't duplicated everytime it prints to jobs.txt
             print("Job added successfully!")
 
 
