@@ -19,4 +19,7 @@ def add_job():
             print("Invalid job status. Please enter a valid job status.")
             job_status = "n/a"
 
-    return {"company_name": company_name, "job_title": job_title, "job_status": job_status}
+    return {"company_name": company_name,
+            "job_title": job_title,
+            "job_status": job_status
+    }

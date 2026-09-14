@@ -13,7 +13,7 @@ def main():
     # This while statement keeps the program running until the user selects exit.
     while True:
         # This menu shows the user all the possible options.
-        print("Welcome to JobTracker!")
+        print("\n----Welcome to JobTracker!----")
         print("1. Add a Job")
         print("2. View Jobs")
         print("3. Exit")
@@ -33,7 +33,7 @@ def main():
 
         elif option == "2":
         
-            print("You have selected View Jobs")
+            print("\nYou have selected View Jobs")
             try:
                 with open("jobs.txt", "r") as file:
                     contents = file.read()
@@ -41,13 +41,13 @@ def main():
             except FileNotFoundError:
                 print("No jobs found. Please add a job first.")
         
-
+            '''
             for job in contents:
                 print("Company:", job["company_name"])
                 print("Job Title:", job["job_title"])
                 print("Job Status:", job["job_status"])
                 print()
-
+            '''
         elif option == "3":
             print("You have selected Exit")
             exit()
