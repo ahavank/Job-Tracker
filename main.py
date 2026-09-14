@@ -41,13 +41,7 @@ def main():
             except FileNotFoundError:
                 print("No jobs found. Please add a job first.")
         
-            '''
-            for job in contents:
-                print("Company:", job["company_name"])
-                print("Job Title:", job["job_title"])
-                print("Job Status:", job["job_status"])
-                print()
-            '''
+
         elif option == "3":
             print("You have selected Exit")
             exit()
